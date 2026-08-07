@@ -1,0 +1,5 @@
+parameters:
+  capi_core:
+    =_metadata:
+      multi_tenant: true
+    namespace: syn-capi-core

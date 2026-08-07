@@ -1,0 +1,32 @@
+{
+  "template": "https://github.com/projectsyn/commodore-component-template.git",
+  "commit": "c61b93c6740fb1aaad80e82716a8400d2df31e80",
+  "checkout": "main",
+  "context": {
+    "cookiecutter": {
+      "name": "capi-core",
+      "slug": "capi-core",
+      "parameter_key": "capi_core",
+      "test_cases": "defaults",
+      "add_lib": "n",
+      "add_pp": "n",
+      "add_golden": "y",
+      "add_matrix": "y",
+      "add_go_unit": "n",
+      "automerge_patch": "y",
+      "automerge_patch_v0": "n",
+      "automerge_patch_regexp_blocklist": "",
+      "automerge_patch_v0_regexp_allowlist": "",
+      "automerge_minor_regexp_allowlist": "",
+      "auto_release": "y",
+      "copyright_holder": "VSHN AG <info@vshn.ch>",
+      "copyright_year": "2026",
+      "github_owner": "projectsyn",
+      "github_name": "component-capi-core",
+      "github_url": "https://github.com/projectsyn/component-capi-core",
+      "_template": "https://github.com/projectsyn/commodore-component-template.git",
+      "_commit": "c61b93c6740fb1aaad80e82716a8400d2df31e80"
+    }
+  },
+  "directory": null
+}
