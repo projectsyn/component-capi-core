@@ -1,11 +1,31 @@
 parameters:
   kapitan:
+    dependencies:
+      - type: git
+        output_path: dependencies/cluster-api/manifests/${capi_core:images:cluster-api:tag}/
+        source: https://github.com/kubernetes-sigs/cluster-api.git
+        subdir: ${capi_core:kustomize:manifest_path}
+        ref: ${capi_core:images:cluster-api:tag}
     compile:
       - input_paths:
           - ${_base_directory}/component/app.jsonnet
         input_type: jsonnet
         output_path: .
+      - input_type: external
+        output_path: .
+        input_paths:
+          - ${_kustomize_wrapper}
+        env_vars:
+          INPUT_DIR: dependencies/cluster-api/manifests/${capi_core:images:cluster-api:tag}/${capi_core:kustomize:target}
+        args:
+          - \${compiled_target_dir}/capi-core/cluster-api/10_kustomize
       - input_paths:
           - ${_base_directory}/component/main.jsonnet
         input_type: jsonnet
         output_path: capi-core/
+  commodore:
+    postprocess:
+      filters:
+        - type: jsonnet
+          filter: postprocess/substitute_capi_variables.jsonnet
+          path: capi-core/cluster-api/10_kustomize

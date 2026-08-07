@@ -3,3 +3,21 @@ parameters:
     =_metadata:
       multi_tenant: true
     namespace: syn-capi-core
+
+    images:
+      cluster-api:
+        repository: https://github.com/kubernetes-sigs/cluster-api.git
+        tag: v1.13.4
+
+    kustomize:
+      # The root path of the kustomize manifests. This path is relative to the root of the repository.
+      manifest_path: config
+      # The path to the kustomize manifests to be rendered. This path is relative to `${capi_core:kustomize:manifest_path}`.
+      target: default
+
+    # An array with variables that the generated manifests will be templated with.
+    # They should be specified in the format:
+    # variables:
+    #   - name: FOO
+    #     value: bar
+    variables: []
