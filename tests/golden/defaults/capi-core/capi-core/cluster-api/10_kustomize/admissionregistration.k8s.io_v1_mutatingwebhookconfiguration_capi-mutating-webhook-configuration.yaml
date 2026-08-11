@@ -4,6 +4,7 @@ metadata:
   annotations:
     cert-manager.io/inject-ca-from: capi-system/capi-serving-cert
   labels:
+    app.kubernetes.io/managed-by: commodore
     cluster.x-k8s.io/provider: cluster-api
   name: capi-mutating-webhook-configuration
 webhooks:
@@ -12,7 +13,7 @@ webhooks:
     clientConfig:
       service:
         name: capi-webhook-service
-        namespace: capi-system
+        namespace: syn-cluster-api
         path: /mutate-cluster-x-k8s-io-v1beta2-cluster
     failurePolicy: Fail
     matchPolicy: Equivalent
@@ -33,7 +34,7 @@ webhooks:
     clientConfig:
       service:
         name: capi-webhook-service
-        namespace: capi-system
+        namespace: syn-cluster-api
         path: /mutate-addons-cluster-x-k8s-io-v1beta2-clusterresourceset
     failurePolicy: Fail
     matchPolicy: Equivalent
@@ -54,7 +55,7 @@ webhooks:
     clientConfig:
       service:
         name: capi-webhook-service
-        namespace: capi-system
+        namespace: syn-cluster-api
         path: /mutate-runtime-cluster-x-k8s-io-v1beta2-extensionconfig
     failurePolicy: Fail
     matchPolicy: Equivalent
@@ -75,7 +76,7 @@ webhooks:
     clientConfig:
       service:
         name: capi-webhook-service
-        namespace: capi-system
+        namespace: syn-cluster-api
         path: /mutate-cluster-x-k8s-io-v1beta2-machine
     failurePolicy: Fail
     matchPolicy: Equivalent
@@ -96,7 +97,7 @@ webhooks:
     clientConfig:
       service:
         name: capi-webhook-service
-        namespace: capi-system
+        namespace: syn-cluster-api
         path: /mutate-cluster-x-k8s-io-v1beta2-machinedeployment
     failurePolicy: Fail
     matchPolicy: Equivalent
@@ -117,7 +118,7 @@ webhooks:
     clientConfig:
       service:
         name: capi-webhook-service
-        namespace: capi-system
+        namespace: syn-cluster-api
         path: /mutate-cluster-x-k8s-io-v1beta2-machinehealthcheck
     failurePolicy: Fail
     matchPolicy: Equivalent
@@ -138,7 +139,7 @@ webhooks:
     clientConfig:
       service:
         name: capi-webhook-service
-        namespace: capi-system
+        namespace: syn-cluster-api
         path: /mutate-cluster-x-k8s-io-v1beta2-machinepool
     failurePolicy: Fail
     matchPolicy: Equivalent
@@ -159,7 +160,7 @@ webhooks:
     clientConfig:
       service:
         name: capi-webhook-service
-        namespace: capi-system
+        namespace: syn-cluster-api
         path: /mutate-cluster-x-k8s-io-v1beta2-machineset
     failurePolicy: Fail
     matchPolicy: Equivalent

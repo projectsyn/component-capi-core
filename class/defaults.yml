@@ -2,7 +2,7 @@ parameters:
   capi_core:
     =_metadata:
       multi_tenant: true
-    namespace: syn-capi-core
+    namespace: syn-cluster-api
 
     images:
       cluster-api:

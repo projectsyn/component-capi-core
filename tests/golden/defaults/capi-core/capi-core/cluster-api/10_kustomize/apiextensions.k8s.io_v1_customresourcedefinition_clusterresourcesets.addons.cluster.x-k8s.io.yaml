@@ -5,6 +5,7 @@ metadata:
     cert-manager.io/inject-ca-from: capi-system/capi-serving-cert
     controller-gen.kubebuilder.io/version: v0.20.0
   labels:
+    app.kubernetes.io/managed-by: commodore
     cluster.x-k8s.io/provider: cluster-api
   name: clusterresourcesets.addons.cluster.x-k8s.io
 spec:
@@ -14,7 +15,7 @@ spec:
       clientConfig:
         service:
           name: capi-webhook-service
-          namespace: capi-system
+          namespace: syn-cluster-api
           path: /convert
       conversionReviewVersions:
         - v1

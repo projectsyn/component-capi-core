@@ -2,10 +2,11 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
+    app.kubernetes.io/managed-by: commodore
     cluster.x-k8s.io/provider: cluster-api
     control-plane: controller-manager
   name: capi-controller-manager
-  namespace: capi-system
+  namespace: syn-cluster-api
 spec:
   replicas: 1
   selector:
