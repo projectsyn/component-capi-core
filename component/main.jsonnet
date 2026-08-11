@@ -9,4 +9,3 @@ local params = inv.parameters.capi_core;
 {
   '00_namespace': kube.Namespace(params.namespace),
 }
-
