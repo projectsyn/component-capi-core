@@ -8,12 +8,12 @@ metadata:
   namespace: syn-cluster-api
 spec:
   dnsNames:
-    - capi-webhook-service.capi-system.svc
-    - capi-webhook-service.capi-system.svc.cluster.local
+  - capi-webhook-service.capi-system.svc
+  - capi-webhook-service.capi-system.svc.cluster.local
   issuerRef:
     kind: Issuer
     name: capi-selfsigned-issuer
   secretName: capi-webhook-service-cert
   subject:
     organizations:
-      - k8s-sig-cluster-lifecycle
+    - k8s-sig-cluster-lifecycle
