@@ -6,9 +6,15 @@ local inv = kap.inventory();
 local params = inv.parameters.capi_core;
 
 com.Kustomization(
-  'https://github.com/kubernetes-sigs/cluster-api/' + params.kustomize.manifest_path + '/' + params.kustomize.target,
+  'https://github.com/kubernetes-sigs/cluster-api/' + params.kustomize.manifest_path,
   params.images['cluster-api'].tag,
-  {},
+  {
+    'registry.k8s.io/cluster-api/cluster-api-controller': {
+      local image = params.images['cluster-api'],
+      newTag: image.tag,
+      newName: '%(registry)s/%(image)s' % image,
+    },
+  },
   {
     namespace: params.namespace,
     labels+: [
