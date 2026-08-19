@@ -40,7 +40,7 @@ spec:
           valueFrom:
             fieldRef:
               fieldPath: metadata.uid
-        image: gcr.io/k8s-staging-cluster-api/cluster-api-controller:main
+        image: registry.k8s.io/cluster-api/cluster-api-controller:v1.13.5
         imagePullPolicy: Always
         livenessProbe:
           httpGet:

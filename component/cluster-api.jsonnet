@@ -11,7 +11,7 @@ com.Kustomization(
   'https://github.com/kubernetes-sigs/cluster-api/' + manifest_path,
   params.images['cluster-api'].tag,
   {
-    'registry.k8s.io/cluster-api/cluster-api-controller': {
+    'gcr.io/k8s-staging-cluster-api/cluster-api-controller': {
       local image = params.images['cluster-api'],
       newTag: image.tag,
       newName: '%(registry)s/%(image)s' % image,
