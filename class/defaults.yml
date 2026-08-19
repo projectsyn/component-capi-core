@@ -10,10 +10,6 @@ parameters:
         image: cluster-api/cluster-api-controller
         tag: v1.13.4
 
-    kustomize:
-      # The root path of the kustomize manifests. This path is relative to the root of the repository.
-      manifest_path: config/default
-
     # An object with variables that the generated manifests will be templated with.
     # They should be specified in the format:
     # variables:
