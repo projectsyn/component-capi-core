@@ -1,9 +1,1 @@
 # Overwrite parameters here
-applications:
-  - capi-core
-
-parameters:
-  components:
-    capi-core:
-      url: https://github.com/projectsyn/component-capi-core.git
-      version: alde-262/implement-capi-core-component
