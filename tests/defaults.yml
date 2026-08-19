@@ -1,6 +1,6 @@
 # Overwrite parameters here
 applications:
-- capi-core
+  - capi-core
 
 parameters:
   components:
