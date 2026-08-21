@@ -2,4 +2,16 @@ parameters:
   capi_core:
     =_metadata:
       multi_tenant: true
-    namespace: syn-capi-core
+    namespace: syn-cluster-api
+
+    images:
+      cluster-api:
+        registry: registry.k8s.io
+        image: cluster-api/cluster-api-controller
+        tag: v1.13.5
+
+    # An object with variables that the generated manifests will be templated with.
+    # They should be specified in the format:
+    # variables:
+    #   foo: bar
+    variables: {}

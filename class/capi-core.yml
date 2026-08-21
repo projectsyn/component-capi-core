@@ -9,3 +9,25 @@ parameters:
           - ${_base_directory}/component/main.jsonnet
         input_type: jsonnet
         output_path: capi-core/
+      - input_paths:
+          - ${_base_directory}/component/cluster-api.jsonnet
+        input_type: jsonnet
+        output_path: ${_base_directory}/manifests/cluster-api/
+      - input_type: external
+        output_path: .
+        input_paths:
+          - ${_kustomize_wrapper}
+        env_vars:
+          INPUT_DIR: ${_base_directory}/manifests/cluster-api/
+        args:
+          - ${_base_directory}/manifests/cluster-api-rendered/
+      - input_type: external
+        output_path: .
+        input_paths:
+          - ${_base_directory}/scripts/envsubst-dir
+        # map env vars from parameters as needed
+        env_vars:
+          ENVSUBST_VERSION: v1.4.3
+        args:
+          - ${_base_directory}/manifests/cluster-api-rendered
+          - \${compiled_target_dir}/capi-core/cluster-api/10_kustomize
