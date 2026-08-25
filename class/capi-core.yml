@@ -24,10 +24,9 @@ parameters:
       - input_type: external
         output_path: .
         input_paths:
-          - ${_base_directory}/scripts/envsubst-dir
+          - ${_base_directory}/envsubst-dir
         # map env vars from parameters as needed
-        env_vars:
-          ENVSUBST_VERSION: v1.4.3
+        env_vars: ${capi_core:variables}
         args:
           - ${_base_directory}/manifests/cluster-api-rendered
           - \${compiled_target_dir}/capi-core/cluster-api/10_kustomize

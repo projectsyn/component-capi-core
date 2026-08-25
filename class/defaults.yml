@@ -10,8 +10,4 @@ parameters:
         image: cluster-api/cluster-api-controller
         tag: v1.13.5
 
-    # An object with variables that the generated manifests will be templated with.
-    # They should be specified in the format:
-    # variables:
-    #   foo: bar
     variables: {}

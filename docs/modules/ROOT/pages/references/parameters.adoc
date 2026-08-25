@@ -6,14 +6,45 @@ The parent key for all of the following parameters is `capi_core`.
 
 [horizontal]
 type:: string
-default:: `syn-capi-core`
+default:: `syn-cluster-api`
 
 The namespace in which to deploy this component.
 
+== `images`
+
+[horizontal]
+type:: dict
+default:: See `class/defaults.yml`
+
+The default Docker image location and tag to use for the CAPI core component (key `capi-core`).
+
+Entries in this dict should be dictionaries with keys `registry`, `image`, and `tag`. This structure provides the basis for dependency maintenance with Renovate.
+
+The value of `capi-core.tag` in this dict is used by the component to select the version of the upstream CAPI core components.
+
+== `variables`
+
+[horizontal]
+type:: dict
+default:: `{}`
+
+An object with environment variables that the generated manifests will be templated with, similar to `clusterctl`.
+Variables should be specified in the format:
+
+[source,yaml]
+----
+variables:
+  FOO: bar
+----
 
 == Example
 
 [source,yaml]
 ----
 namespace: example-namespace
+images:
+  capi-core:
+    tag: v1.14.0
+variables:
+  SOME_VAR: value
 ----
