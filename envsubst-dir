@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-basedir=$(dirname "$0")/../dependencies
+basedir=$(dirname "$0")
 version="${ENVSUBST_VERSION:-v1.4.3}"
 
 src="$1"
