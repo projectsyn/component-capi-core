@@ -48,6 +48,84 @@ com.Kustomization(
       },
     ],
     patchesStrategicMerge: [ 'rm-namespace.yaml' ],
+    // NOTE(sg): Somehow the upstream replacements don't take our `namespace`
+    // override into account? For now, we replicate the namespace replacements
+    // here to workaround this issue.
+    replacements: [
+      {
+        source: {
+          fieldPath: '.metadata.namespace',
+          group: 'cert-manager.io',
+          kind: 'Certificate',
+          name: 'serving-cert',
+          version: 'v1',
+        },
+        targets: [
+          {
+            fieldPaths: [
+              '.metadata.annotations.[cert-manager.io/inject-ca-from]',
+            ],
+            options: {
+              create: true,
+              delimiter: '/',
+            },
+            select: {
+              kind: 'ValidatingWebhookConfiguration',
+            },
+          },
+          {
+            fieldPaths: [
+              '.metadata.annotations.[cert-manager.io/inject-ca-from]',
+            ],
+            options: {
+              create: true,
+              delimiter: '/',
+            },
+            select: {
+              kind: 'MutatingWebhookConfiguration',
+            },
+          },
+          {
+            fieldPaths: [
+              '.metadata.annotations.[cert-manager.io/inject-ca-from]',
+            ],
+            options: {
+              create: true,
+              delimiter: '/',
+            },
+            select: {
+              kind: 'CustomResourceDefinition',
+            },
+          },
+        ],
+      },
+      {
+        source: {
+          fieldPath: '.metadata.namespace',
+          kind: 'Service',
+          name: 'webhook-service',
+          version: 'v1',
+        },
+        targets: [
+          {
+            fieldPaths: [
+              '.spec.dnsNames.0',
+              '.spec.dnsNames.1',
+            ],
+            options: {
+              create: true,
+              delimiter: '.',
+              index: 1,
+            },
+            select: {
+              group: 'cert-manager.io',
+              kind: 'Certificate',
+              version: 'v1',
+            },
+          },
+        ],
+      },
+    ],
   },
 ) {
   'rm-namespace': [
