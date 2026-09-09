@@ -1,9 +1,13 @@
 // main template for capi-core
 local com = import 'lib/commodore.libjsonnet';
 local kap = import 'lib/kapitan.libjsonnet';
+
+local capi = import 'lib/capi-core.libsonnet';
+
 local inv = kap.inventory();
 // The hiera parameters for the component
 local params = inv.parameters.capi_core;
+
 
 local capi_version =
   local verparts = std.split(params.images['cluster-api'].tag[1:], '.');
@@ -48,16 +52,7 @@ com.Kustomization(
       },
     ],
     patchesStrategicMerge: [ 'rm-namespace.yaml' ],
-    patches: [
-      {
-        path: 'clusterctl-label.yaml',
-        target: {
-          group: 'apiextensions.k8s.io',
-          version: 'v1',
-          kind: 'CustomResourceDefinition',
-        },
-      },
-    ],
+    patches: [ capi.kustomize_patch_crd_clusterctl_label.patch ],
     // NOTE(sg): Somehow the upstream replacements don't take our `namespace`
     // override into account? For now, we replicate the namespace replacements
     // here to workaround this issue.
@@ -148,16 +143,4 @@ com.Kustomization(
       },
     },
   ],
-  'clusterctl-label': [
-    {
-      apiVersion: 'apiextensions.k8s.io/v1',
-      kind: 'CustomResourceDefinition',
-      metadata: {
-        name: 'REPLACE_ME',
-        labels: {
-          'clusterctl.cluster.x-k8s.io': '',
-        },
-      },
-    },
-  ],
-}
+} + capi.kustomize_patch_crd_clusterctl_label.patch_file
