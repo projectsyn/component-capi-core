@@ -48,6 +48,16 @@ com.Kustomization(
       },
     ],
     patchesStrategicMerge: [ 'rm-namespace.yaml' ],
+    patches: [
+      {
+        path: 'clusterctl-label.yaml',
+        target: {
+          group: 'apiextensions.k8s.io',
+          version: 'v1',
+          kind: 'CustomResourceDefinition',
+        },
+      },
+    ],
     // NOTE(sg): Somehow the upstream replacements don't take our `namespace`
     // override into account? For now, we replicate the namespace replacements
     // here to workaround this issue.
@@ -135,6 +145,18 @@ com.Kustomization(
       kind: 'Namespace',
       metadata: {
         name: 'capi-system',
+      },
+    },
+  ],
+  'clusterctl-label': [
+    {
+      apiVersion: 'apiextensions.k8s.io/v1',
+      kind: 'CustomResourceDefinition',
+      metadata: {
+        name: 'REPLACE_ME',
+        labels: {
+          'clusterctl.cluster.x-k8s.io': '',
+        },
       },
     },
   ],
