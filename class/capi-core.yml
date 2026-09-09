@@ -30,3 +30,9 @@ parameters:
         args:
           - ${_base_directory}/manifests/cluster-api-rendered
           - \${compiled_target_dir}/capi-core/cluster-api/10_kustomize
+
+      # Cleanup intermediate manifests
+      - input_type: remove
+        input_paths:
+          - ${_base_directory}/manifests/
+        output_path: .
