@@ -8,7 +8,7 @@
       "slug": "capi-core",
       "parameter_key": "capi_core",
       "test_cases": "defaults old-kustomize-path new-kustomize-path",
-      "add_lib": "n",
+      "add_lib": "y",
       "add_pp": "n",
       "add_golden": "y",
       "add_matrix": "y",
