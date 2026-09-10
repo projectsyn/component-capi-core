@@ -2,4 +2,11 @@
 
 capi-core is a Commodore component to manage capi-core.
 
+[TIP]
+====
+The component labels all CRDs with `clusterctl.cluster.x-k8s.io=""` which is used by the cluster API `clusterctl` CLI when discovering cluster API resources on a cluster.
+
+Additionally, the component provides a component library (`capi-core.libsonnet`) which provides a Kustomize patch configuration that other components can use to label their CRDs with `clusterctl.cluster.x-k8s.io=""`.
+====
+
 See the xref:references/parameters.adoc[parameters] reference for further details.
