@@ -7,6 +7,7 @@ parameters:
         output_path: .
       - input_paths:
           - ${_base_directory}/component/main.jsonnet
+          - ${_base_directory}/component/user-kubeconfig.jsonnet
         input_type: jsonnet
         output_path: capi-core/
       - input_paths:
