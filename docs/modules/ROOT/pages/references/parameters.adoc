@@ -37,6 +37,60 @@ variables:
   FOO: bar
 ----
 
+== `kubeconfig`
+
+This parameter configures the user kubeconfig server.
+See the xref:how-tos/user-kubeconfig.adoc[how-to] for step by step instructions to configure the server.
+
+=== `serverURL`
+
+[horizontal]
+type:: string
+default:: `""`
+
+The host name on which to expose the user kubeconfig server.
+If left empty, the user kubeconfig server isn't deployed.
+
+=== `apiURL`
+
+[horizontal]
+type:: string
+default:: `""`
+
+This parameter can be set to a more user-friendly URL for the Kubernetes API server.
+If this parameter is left as the empty string, the user kubeconfig is rendered with the API server URL as provisioned by Cluster API.
+
+[NOTE]
+====
+The functionality of this parameter depends on the options available through the CAPI control plane provider for each individual cluster.
+====
+
+=== `ingress`
+
+[horizontal]
+type:: object
+default:: `{}`
+
+Configuration for the `Ingress` object which exposes the user kubeconfig server.
+The component always overrides any user-supplied values for `metadata.name`, `metadata.namespace` and `spec.rules`.
+
+=== `oidc`
+
+[horizontal]
+type:: object
+default::
++
+[source,yaml]
+----
+issuerURL: ""
+clientId: ""
+----
+
+Currently, the component unconditionally renders a user kubeconfig that's suitable for OIDC authentication with the `kubectl` https://github.com/int128/kubelogin[kubelogin] plugin.
+The component uses the values provided in this parameter as values for flags `--oidc-issuer-url` and `--oidc-client-id` for the `kubectl oidc-login get-token` call.
+
+NOTE: The component will raise an error if either of the fields is empty.
+
 == Example
 
 [source,yaml]

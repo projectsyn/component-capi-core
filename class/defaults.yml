@@ -9,5 +9,17 @@ parameters:
         registry: registry.k8s.io
         image: cluster-api/cluster-api-controller
         tag: v1.13.6
+      caddy:
+        registry: docker.io
+        repository: caddy/caddy
+        tag: 2.11.4-alpine
 
     variables: {}
+
+    kubeconfig:
+      serverURL: ""
+      apiURL: ""
+      ingress: {}
+      oidc:
+        issuerURL: ""
+        clientId: ""
