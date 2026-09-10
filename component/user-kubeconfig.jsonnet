@@ -315,7 +315,7 @@ local ingress =
     },
   };
 
-{
+if params.kubeconfig.serverURL != '' then {
   '20_kubeconfig_manager': [
     managedresource,
     jsonnetlib,
@@ -329,4 +329,4 @@ local ingress =
     service,
     ingress,
   ],
-}
+} else {}
