@@ -21,4 +21,21 @@
       },
     },
   },
+
+  capiApiVersion: 'v1beta2',
+
+  _Resource(apiGroup, kind, name): {
+    apiVersion: '%s/%s' % [ apiGroup, $.capiApiVersion ],
+    kind: kind,
+    metadata: {
+      name: name,
+    },
+  },
+
+  Cluster(name):
+    $._Resource('cluster.x-k8s.io', 'Cluster', name),
+  MachineDeployment(name):
+    $._Resource('cluster.x-k8s.io', 'MachineDeployment', name),
+  ClusterResourceSet(name):
+    $._Resource('addons.cluster.x-k8s.io', 'ClusterResourceSet', name),
 }
