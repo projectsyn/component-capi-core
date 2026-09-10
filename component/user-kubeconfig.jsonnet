@@ -84,8 +84,18 @@ local jsonnetlib = esp.jsonnetLibrary('capi-kubeconfig-ca-manager', params.names
         caddyResourceName: caddyResourceName,
         namespace: params.namespace,
         apiURL: params.kubeconfig.apiURL,
-        oidcIssuerURL: params.kubeconfig.oidc.issuerURL,
-        oidcClientId: params.kubeconfig.oidc.clientId,
+        oidcIssuerURL: if params.kubeconfig.oidc.issuerURL == '' then
+          error
+            '\n\n[capi-core] Parameter `kubeconfig.oidc.issuerURL` must not be empty '
+            + 'when the user kubeconfig server is enabled (`kubectl.serverURL != ""`)'
+        else
+          params.kubeconfig.oidc.issuerURL,
+        oidcClientId: if params.kubeconfig.oidc.clientId == '' then
+          error
+            '\n\n[capi-core] Parameter `kubeconfig.oidc.clientId` must not be empty '
+            + 'when the user kubeconfig server is enabled (`kubectl.serverURL != ""`)'
+        else
+          params.kubeconfig.oidc.clientId,
       }),
       'caddy.json': std.manifestJsonMinified(caddyConfig),
       'index.html': importstr 'assets/user-kubeconfig-index.html',
