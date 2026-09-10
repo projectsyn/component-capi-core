@@ -8,6 +8,6 @@ parameters:
       cluster-api:
         registry: registry.k8s.io
         image: cluster-api/cluster-api-controller
-        tag: v1.13.6
+        tag: v1.14.2
 
     variables: {}
