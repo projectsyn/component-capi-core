@@ -1,0 +1,52 @@
+= Component Library
+
+The component includes a Jsonnet library which provides helpers for creating cluster API custom resources.
+
+This page provides details for each field and function provided by the library.
+
+[NOTE]
+====
+The component currently only provides functions for a subset of cluster API custom resources.
+
+Users can use the `_Resource(apiGroup, kind, name)` helper to create other resources.
+====
+
+== `capiApiVersion`
+
+The recommended Kubernetes API version for cluster API custom resources.
+
+[NOTE]
+====
+This is currently hard-coded in the library.
+
+If necessary, users can override this on library import.
+====
+
+== `Cluster(name)`
+
+This function creates a minimal `Cluster` custom resource.
+
+The function only populates fields `apiVersion`, `kind` and `metadata.name`.
+Field `metadata.name` is set to the value of argument `name`.
+
+== `MachineDeployment(name)`
+
+This function creates a minimal `MachineDeployment` custom resource.
+
+The function only populates fields `apiVersion`, `kind` and `metadata.name`.
+Field `metadata.name` is set to the value of argument `name`.
+
+== `ClusterResourceSet(name)`
+
+This function creates a minimal `ClusterResourceSet` custom resource.
+
+The function only populates fields `apiVersion`, `kind` and `metadata.name`.
+Field `metadata.name` is set to the value of argument `name`.
+
+== `_Resource(apiGroup, kind, name)`
+
+This function creates a minimal custom resource based on the function arguments.
+
+The function only populates fields `apiVersion`, `kind` and `metadata.name`.
+The function uses library field `apiVersion` to create field `apiVersion` based on the provided `apiGroup`.
+Fields `kind` and `metadata.name` are set to the values of arguments `kind` and `name` respectively.
