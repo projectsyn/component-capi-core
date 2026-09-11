@@ -50,3 +50,9 @@ This function creates a minimal custom resource based on the function arguments.
 The function only populates fields `apiVersion`, `kind` and `metadata.name`.
 The function uses library field `apiVersion` to create field `apiVersion` based on the provided `apiGroup`.
 Fields `kind` and `metadata.name` are set to the values of arguments `kind` and `name` respectively.
+
+== `kustomize_crd_clusterctl_label_patch`
+
+This library field provides a Kustomize patch which applies label `clusterctl.cluster.x-k8s.io=""` to all CRDs which are part of the target Kustomization.
+
+This library field provides the patch as an object which is suitable to be merged into the output of https://syn.tools/commodore/reference/commodore-libjsonnet.html#_kustomizationbase_url_base_version_images_kustomize_input[the Commodore `com.Kustomization()` helper function].
