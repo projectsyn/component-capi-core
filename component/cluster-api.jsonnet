@@ -52,7 +52,6 @@ com.Kustomization(
       },
     ],
     patchesStrategicMerge: [ 'rm-namespace.yaml' ],
-    patches: [ capi.kustomize_patch_crd_clusterctl_label.patch ],
     // NOTE(sg): Somehow the upstream replacements don't take our `namespace`
     // override into account? For now, we replicate the namespace replacements
     // here to workaround this issue.
@@ -143,4 +142,4 @@ com.Kustomization(
       },
     },
   ],
-} + capi.kustomize_patch_crd_clusterctl_label.patch_file
+} + capi.kustomize_crd_clusterctl_label_patch
