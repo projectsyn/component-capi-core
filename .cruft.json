@@ -7,7 +7,7 @@
       "name": "capi-core",
       "slug": "capi-core",
       "parameter_key": "capi_core",
-      "test_cases": "defaults old-kustomize-path new-kustomize-path",
+      "test_cases": "defaults old-kustomize-path new-kustomize-path user-kubeconfig-server",
       "add_lib": "y",
       "add_pp": "n",
       "add_golden": "y",
