@@ -1,22 +1,24 @@
 {
-  kustomize_patch_crd_clusterctl_label: {
-    patch: {
-      path: 'clusterctl-label.yaml',
-      target: {
-        group: 'apiextensions.k8s.io',
-        version: 'v1',
-        kind: 'CustomResourceDefinition',
-      },
+  // NOTE(sg): This is structured in a way that allows it to be merged into
+  // the result of `com.Kustomzation()` without any adjustments.
+  kustomize_crd_clusterctl_label_patch: {
+    kustomization+: {
+      patches+: [ {
+        path: 'capi-core-clusterctl-label.yaml',
+        target: {
+          group: 'apiextensions.k8s.io',
+          version: 'v1',
+          kind: 'CustomResourceDefinition',
+        },
+      } ],
     },
-    patch_file: {
-      'clusterctl-label': {
-        apiVersion: 'apiextensions.k8s.io/v1',
-        kind: 'CustomResourceDefinition',
-        metadata: {
-          name: 'REPLACE_ME',
-          labels: {
-            'clusterctl.cluster.x-k8s.io': '',
-          },
+    'capi-core-clusterctl-label': {
+      apiVersion: 'apiextensions.k8s.io/v1',
+      kind: 'CustomResourceDefinition',
+      metadata: {
+        name: 'REPLACE_ME',
+        labels: {
+          'clusterctl.cluster.x-k8s.io': '',
         },
       },
     },
