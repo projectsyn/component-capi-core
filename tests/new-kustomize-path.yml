@@ -1,7 +1,0 @@
-# Overwrite parameters here
-
-parameters:
-  capi_core:
-    images:
-      cluster-api:
-        tag: v1.14.0

@@ -1,13 +1,13 @@
 {
   "template": "https://github.com/projectsyn/commodore-component-template.git",
-  "commit": "37002ce82651841be39ce0089de09962e0cef932",
+  "commit": "4c5e2e3302ad838781795162fca1cd512139129c",
   "checkout": "main",
   "context": {
     "cookiecutter": {
       "name": "capi-core",
       "slug": "capi-core",
       "parameter_key": "capi_core",
-      "test_cases": "defaults old-kustomize-path new-kustomize-path user-kubeconfig-server",
+      "test_cases": "defaults old-kustomize-path user-kubeconfig-server",
       "add_lib": "y",
       "add_pp": "n",
       "add_golden": "y",
@@ -25,7 +25,7 @@
       "github_name": "component-capi-core",
       "github_url": "https://github.com/projectsyn/component-capi-core",
       "_template": "https://github.com/projectsyn/commodore-component-template.git",
-      "_commit": "37002ce82651841be39ce0089de09962e0cef932"
+      "_commit": "4c5e2e3302ad838781795162fca1cd512139129c"
     }
   },
   "directory": null
