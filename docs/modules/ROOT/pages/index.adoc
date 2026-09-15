@@ -10,3 +10,5 @@ Additionally, the component provides a component library (`capi-core.libsonnet`)
 ====
 
 See the xref:references/parameters.adoc[parameters] reference for further details.
+
+See the xref:references/library.adoc[component library] reference for details regarding the functionality provided by the component's Jsonnet library.
