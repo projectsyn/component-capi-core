@@ -34,7 +34,6 @@ jobs:
         instance:
           - defaults
           - old-kustomize-path
-          - new-kustomize-path
           - user-kubeconfig-server
     defaults:
       run:
@@ -52,7 +51,6 @@ jobs:
         instance:
           - defaults
           - old-kustomize-path
-          - new-kustomize-path
           - user-kubeconfig-server
     defaults:
       run:
